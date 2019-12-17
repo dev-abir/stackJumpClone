@@ -6,5 +6,5 @@
 .*
 !/.gitignore
 
-#not including resources directory, which is extremely important for running this game(I cannot upload this to online repository)
+#not including resources directory, which is extremely important for running this game(I cannot upload this to online repository due to it's size)
 /resources/
