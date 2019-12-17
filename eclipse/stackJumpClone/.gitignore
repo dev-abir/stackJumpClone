@@ -1,1 +1,8 @@
+#binary directoris
 /Release/
+/Debug/
+
+#eclipse IDE related files
+/.cproject
+/.project
+/.settings/
