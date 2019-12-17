@@ -2,6 +2,6 @@
 /Release/
 /Debug/
 
-#all hidden files(except .gitignore)
+#all hidden files(except .gitignore)(These are mainly Eclipse IDE related files)
 .*
 !/.gitignore
