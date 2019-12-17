@@ -2,7 +2,6 @@
 /Release/
 /Debug/
 
-#eclipse IDE related files
-/.cproject
-/.project
-/.settings/
+#all hidden files(except .gitignore)
+.*
+!/.gitignore
