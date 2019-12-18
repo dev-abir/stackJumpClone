@@ -16,6 +16,7 @@
 #include "../Misc/Exceptions.h"
 #include "../Misc/TextBox.h"
 #include "../NewGame/NewGame.h"
+#include "../Misc/Util.h"
 
 class MainMenu final : public Scene {
 private:
@@ -23,7 +24,6 @@ private:
 	sf::Font menuFont;
 	sf::Sprite background;
 	TextBox* newGame;
-	TextBox* resume;
 	TextBox* settings;
 
 	bool willChangeScene = false;

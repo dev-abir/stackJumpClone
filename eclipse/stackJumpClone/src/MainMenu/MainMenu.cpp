@@ -7,8 +7,6 @@
 
 #include "MainMenu.h"
 
-#include "../Misc/Util.h"
-
 /*
  *
  * TODO : If the player changes FPS in settings, then you must change the FPS in PhysicsObject class
@@ -60,18 +58,13 @@ MainMenu::MainMenu() :
 					newGame->getPosition().y + verticalDistanceBetweenTwoBoxes),
 			menuBoxSize);
 	settings->setAlternateColor(sf::Color::Green, sf::Color::Magenta);
-	resume = new TextBox("Resume", &menuFont, sf::Color::Red, sf::Color::Blue,
-			new sf::Vector2f(menuBoxDistanceFromLeftEdge,
-					settings->getPosition().y
-							+ verticalDistanceBetweenTwoBoxes), menuBoxSize);
-	resume->setAlternateColor(sf::Color::Green, sf::Color::Magenta);
+
 
 	delete menuBoxSize;
 }
 
 MainMenu::~MainMenu() {
 	delete newGame;
-	delete resume;
 	delete settings;
 	//delete MainMenu::newScene; //(It will be deleted in Scene.cpp's destructor)
 }
@@ -82,7 +75,6 @@ void MainMenu::update(const float delta) {
 void MainMenu::draw(sf::RenderWindow &window) const {
 	window.draw(background);
 	window.draw(*newGame);
-	window.draw(*resume);
 	window.draw(*settings);
 	//newGame->setPosition(sf::Vector2f((newGame->getPosition().x + 1), (newGame->getPosition().y + 1)));
 }

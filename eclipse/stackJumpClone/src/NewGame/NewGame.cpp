@@ -66,21 +66,25 @@ void NewGame::actionOnKeyPress(sf::Keyboard::Key key, const float delta) {
 	if(key == sf::Keyboard::Up) {
 		playerMoveUp = true;
 	}
+	if(key == sf::Keyboard::Space) {
+		pause();
+	}
 }
 
 void NewGame::pause() {
+	Scene::setNewScene(new PauseMenu);
 }
 
-Scene* NewGame::getNewScene() const {
+/*Scene* NewGame::getNewScene() const {
 	return nullptr;
-}
+}*/
 
 void NewGame::actionOnMouseMove(const sf::RenderWindow* window, const float delta) {
 }
 
-bool NewGame::getWillChangeScene() const {
+/*bool NewGame::getWillChangeScene() const {
 	return false;
-}
+}*/
 
-void NewGame::setNewScene(Scene *newScene) {
-}
+/*void NewGame::setNewScene(Scene *newScene) {
+}*/
