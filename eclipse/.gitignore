@@ -1,3 +1,0 @@
-#all hidden files(except .gitignore)(These are mainly Eclipse IDE related files)
-.*
-!/.gitignore
