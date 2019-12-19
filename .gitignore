@@ -1,3 +1,6 @@
 #all hidden files(except .gitignore)(These are mainly Eclipse IDE related files)
 .*
 !/.gitignore
+
+#A folder which is extremely necessary to run this game, not including this due to it's size.
+/resources/
