@@ -30,4 +30,4 @@ add_library(StackJumpClone ${all_sources})
 
 add_executable(game main.cpp)
 
-target_link_libraries(game libStackJump sfml-graphics sfml-window sfml-system)
+target_link_libraries(game StackJumpClone sfml-graphics sfml-window sfml-system)
