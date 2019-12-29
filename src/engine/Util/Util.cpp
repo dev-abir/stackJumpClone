@@ -10,8 +10,7 @@
 bool isIntercept(sf::FloatRect boundsOfBodyA, sf::FloatRect boundsOfBodyB) {
 	if((boundsOfBodyB.left > boundsOfBodyA.left) && ((boundsOfBodyB.width + boundsOfBodyB.left) < (boundsOfBodyA.width + boundsOfBodyA.left)) && (boundsOfBodyB.top > boundsOfBodyA.top) && ((boundsOfBodyB.height + boundsOfBodyB.top) < (boundsOfBodyA.height + boundsOfBodyA.top))) {
 		return true; //Body B is inside body A
-	}
-	else {
+	} else {
 		sf::FloatRect temp = boundsOfBodyA;
 		boundsOfBodyA = boundsOfBodyB;
 		boundsOfBodyB = temp;

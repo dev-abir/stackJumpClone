@@ -14,7 +14,7 @@
 
 class NewGame final : public Scene {
 
-private:
+  private:
 	sf::Texture backgroundTexture;
 	sf::Sprite background;
 
@@ -35,7 +35,7 @@ private:
 
 	void applyForce(sf::Vector2f);
 
-public:
+  public:
 	NewGame();
 	virtual ~NewGame();
 	void draw(sf::RenderWindow &window) const override;

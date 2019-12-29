@@ -67,8 +67,7 @@ void TextBox::toggleColor() {
 		sfmlBox->setFillColor(defaultFillColor);
 		sfmlBox->setOutlineColor(defaultOutlineColor);
 		colorChanged = false;
-	}
-	else {
+	} else {
 		sfmlBox->setFillColor(alternateFillColor);
 		sfmlBox->setOutlineColor(alternateOutlineColor);
 		colorChanged = true;

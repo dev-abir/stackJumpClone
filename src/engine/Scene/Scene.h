@@ -14,16 +14,16 @@
 #include "Misc/Exceptions.h"
 
 class Scene {
-private:
+  private:
 	bool pauseable;
 	bool isPaused;
 	bool willChangeScene = false;
 
-protected:
+  protected:
 	Scene* newScene;
 	virtual void setNewScene(Scene* newScene);
 
-public:
+  public:
 	Scene(bool pauseable);
 	virtual ~Scene();
 	bool getIsPaused() const;

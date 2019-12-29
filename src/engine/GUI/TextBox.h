@@ -13,7 +13,7 @@
 #include <iostream>
 
 class TextBox final : public sf::Drawable {
-private:
+  private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	sf::RectangleShape* sfmlBox;
 	sf::Text* sfmlText;
@@ -25,7 +25,7 @@ private:
 	sf::Color alternateOutlineColor;
 
 
-public:
+  public:
 	TextBox(std::string boxText, sf::Font* sfmlFont, const sf::Color defaultFillColor, const sf::Color defaultOutlineColor, sf::Vector2f* position, sf::Vector2f* boxSize);
 	virtual ~TextBox();
 

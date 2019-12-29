@@ -14,7 +14,7 @@
  */
 
 MainMenu::MainMenu() :
-		Scene(false) {
+	Scene(false) {
 	if (!menuFont.loadFromFile(MAIN_MENU_FONT_FILE)) {
 		std::cerr << "Cannot load " << SERIF_FONT_FILE << "\n";
 		throw EXCEPTION_CANNOT_OPEN_FILE;
@@ -48,15 +48,15 @@ MainMenu::MainMenu() :
 			- (nBoxes * menuBoxSize->y)) / 2;
 
 	newGame = new TextBox("New Game", &menuFont, sf::Color::Red,
-			sf::Color::Blue,
-			new sf::Vector2f(menuBoxDistanceFromLeftEdge,
-					firstMenuBoxDistanceFromTopEdge), menuBoxSize);
+						  sf::Color::Blue,
+						  new sf::Vector2f(menuBoxDistanceFromLeftEdge,
+										   firstMenuBoxDistanceFromTopEdge), menuBoxSize);
 	newGame->setAlternateColor(sf::Color::Green, sf::Color::Magenta);
 	settings = new TextBox("Settings", &menuFont, sf::Color::Red,
-			sf::Color::Blue,
-			new sf::Vector2f(menuBoxDistanceFromLeftEdge,
-					newGame->getPosition().y + verticalDistanceBetweenTwoBoxes),
-			menuBoxSize);
+						   sf::Color::Blue,
+						   new sf::Vector2f(menuBoxDistanceFromLeftEdge,
+											newGame->getPosition().y + verticalDistanceBetweenTwoBoxes),
+						   menuBoxSize);
 	settings->setAlternateColor(sf::Color::Green, sf::Color::Magenta);
 
 

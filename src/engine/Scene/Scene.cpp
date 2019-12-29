@@ -44,8 +44,7 @@ bool Scene::getWillChangeScene() const {
 Scene* Scene::getNewScene() const {
 	if(getWillChangeScene()) {
 		return newScene;
-	}
-	else {
+	} else {
 		std::cerr << "Invalid operation\n";
 		throw EXCEPTION_INVALID_OPERATION;
 	}

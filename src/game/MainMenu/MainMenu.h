@@ -19,7 +19,7 @@
 #include "../Misc/Util.h"
 
 class MainMenu final : public Scene {
-private:
+  private:
 	sf::Texture backgroundTexture;
 	sf::Font menuFont;
 	sf::Sprite background;
@@ -29,7 +29,7 @@ private:
 	bool willChangeScene = false;
 
 
-public:
+  public:
 	MainMenu();
 	virtual ~MainMenu();
 	void update(const float delta) override;

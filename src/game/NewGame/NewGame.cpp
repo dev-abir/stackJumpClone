@@ -40,8 +40,7 @@ void NewGame::update(const float delta) {
 	if(player.getPosition().y >= (HEIGHT - player.getGlobalBounds().height)) {
 		acceleration = 0;
 		playerCurrentVelocity = 0;
-	}
-	else {
+	} else {
 		acceleration -= g;
 		player.move(0, -(playerCurrentVelocity * time + (1.0 / 2.0) * acceleration * time * time)); //s = ut+(1/2)at<square>, -ve value of move(x, y)'s second argument means the player will move upwards
 	}

@@ -15,7 +15,7 @@
 
 class PauseMenu final : public Scene {
 
-private:
+  private:
 	sf::Texture backgroundTexture;
 	sf::Font menuFont;
 	sf::Sprite background;
@@ -24,7 +24,7 @@ private:
 
 	bool willChangeScene = false;
 
-public:
+  public:
 	PauseMenu();
 	virtual ~PauseMenu();
 	void update(const float delta) override;
@@ -32,9 +32,9 @@ public:
 
 	void actionOnKeyRelase(sf::Keyboard::Key, const float delta) override;
 	void actionOnMouseClick(sf::Mouse::Button, const sf::RenderWindow *window,
-			const float delta) override;
+							const float delta) override;
 	void actionOnMouseMove(const sf::RenderWindow *window, const float delta)
-			override;
+	override;
 	void actionOnKeyPress(sf::Keyboard::Key, const float delta) override;
 };
 

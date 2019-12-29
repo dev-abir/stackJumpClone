@@ -28,7 +28,7 @@ void cleanup() {
 
 int main() {
 	sf::RenderWindow *window = new sf::RenderWindow(
-			sf::VideoMode(WIDTH, HEIGHT), "Stack jump clone", sf::Style::Close);
+		sf::VideoMode(WIDTH, HEIGHT), "Stack jump clone", sf::Style::Close);
 
 	//window->setVerticalSyncEnabled(true); //Or else use : window->setFramerateLimit(60); (But don't use both at the same time)
 	window->setFramerateLimit(expectedFPS);
