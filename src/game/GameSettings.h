@@ -1,30 +1,21 @@
 /*
- * Common.h
+ * GameSettings.h
  *
- *  Created on: 07-Oct-2019
+ *  Created on: 29-Dec-2019
  *      Author: pluto
  */
 
-#ifndef MISC_COMMON_H_
-#define MISC_COMMON_H_
+#ifndef GAME_SETTINGS_H_
+#define GAME_SETTINGS_H_
 
-#define WIDTH 600
-#define HEIGHT 600
 
 ///////Physics///////
 #define g 9.8 //In metre per second square
 
 
-
-///////Fonts///////
-#define SERIF_FONT_FILE "resources/fonts/FreeSerif.ttf"
-
-
-
 ///////Main Menu///////
 #define MAIN_MENU_FONT_FILE SERIF_FONT_FILE
 #define MAIN_MENU_BACKGROUND_TEXTURE_FILE "resources/sky1.png"
-
 
 
 ///////New Game///////
@@ -36,8 +27,4 @@
 #define FORCE_IMPARTED_ON_PRESSING_KEY_UP 2000
 
 
-
-
-
-
-#endif /* MISC_COMMON_H_ */
+#endif /* GAME_SETTINGS_H_ */
