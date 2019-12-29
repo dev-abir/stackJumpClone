@@ -1,3 +1,12 @@
+
+###############################################################
+#
+#
+#	This CMakeLists.txt file doesn't "find" the sfml libraries. Need to add "find sfml..."
+#
+#
+###############################################################
+
 cmake_minimum_required(VERSION 2.8)
 project(stackJumpClone)
 
