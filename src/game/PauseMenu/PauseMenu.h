@@ -8,10 +8,10 @@
 #ifndef PAUSEMENU_PAUSEMENU_H_
 #define PAUSEMENU_PAUSEMENU_H_
 
-#include "../Scene.h"
-#include "../Misc/Common.h"
-#include "../Misc/TextBox.h"
-#include "../Misc/Util.h"
+#include <Scene/Scene.h>
+#include "GameSettings.h"
+#include <GUI/TextBox.h>
+#include <Util/Util.h>
 
 class PauseMenu final : public Scene {
 
