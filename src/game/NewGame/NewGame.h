@@ -8,9 +8,9 @@
 #ifndef NEWGAME_NEWGAME_H_
 #define NEWGAME_NEWGAME_H_
 
-#include "../Scene.h"
-#include "../Misc/Common.h"
-#include "../PauseMenu/PauseMenu.h"
+#include <Scene.h>
+#include "GameSettings.h"
+#include "PauseMenu/PauseMenu.h"
 
 class NewGame final : public Scene {
 

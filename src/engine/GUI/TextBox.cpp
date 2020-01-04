@@ -5,7 +5,7 @@
  *      Author: pluto
  */
 
-#include "../Misc/TextBox.h"
+#include "TextBox.h"
 
 TextBox::TextBox(std::string boxText, sf::Font* sfmlFont, const sf::Color defaultFillColor, const sf::Color defaultOutlineColor, sf::Vector2f* position, sf::Vector2f* boxSize) : defaultFillColor(defaultFillColor), defaultOutlineColor(defaultOutlineColor) {
 

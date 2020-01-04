@@ -8,15 +8,15 @@
 #ifndef MAINMENU_MAINMENU_H_
 #define MAINMENU_MAINMENU_H_
 
-#include "../Scene.h"
 #include <string>
 #include <iostream>
 
-#include "../Misc/Common.h"
-#include "../Misc/Exceptions.h"
-#include "../Misc/TextBox.h"
-#include "../NewGame/NewGame.h"
-#include "../Misc/Util.h"
+#include <Scene.h>
+#include "GameSettings.h"
+#include <Exceptions.h>
+#include <GUI/TextBox.h>
+#include "NewGame.h"
+#include <Util/Util.h>
 
 class MainMenu final : public Scene {
   private:

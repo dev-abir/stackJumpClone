@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "MainMenu/MainMenu.h"
-#include "Misc/Common.h"
+#include "GameSettings.h"
 #include "Scene.h"
 
 /**

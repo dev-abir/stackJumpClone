@@ -11,7 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "Misc/Exceptions.h"
+#include "Exceptions.h"
 
 class Scene {
   private:
