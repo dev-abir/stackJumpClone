@@ -40,15 +40,14 @@ PauseMenu::PauseMenu() : Scene(false) {
 			- ((nBoxes - 1) * verticalDistanceBetweenTwoBoxes)
 			- (nBoxes * menuBoxSize->y)) / 2;
 
-	settings = new TextBox("Resume", &menuFont, sf::Color::Red, sf::Color::Blue,
+	settings = new TextBox("Settings", &menuFont, sf::Color::Red, sf::Color::Blue,
 						   new sf::Vector2f(menuBoxDistanceFromLeftEdge,
-											settings->getPosition().y
-											+ verticalDistanceBetweenTwoBoxes), menuBoxSize);
+										   firstMenuBoxDistanceFromTopEdge), menuBoxSize);
 	settings->setAlternateColor(sf::Color::Green, sf::Color::Magenta);
 
 	resume = new TextBox("Resume", &menuFont, sf::Color::Red, sf::Color::Blue,
 						 new sf::Vector2f(menuBoxDistanceFromLeftEdge,
-										  resume->getPosition().y
+										  settings->getPosition().y
 										  + verticalDistanceBetweenTwoBoxes), menuBoxSize);
 	resume->setAlternateColor(sf::Color::Green, sf::Color::Magenta);
 
