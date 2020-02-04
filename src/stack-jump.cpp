@@ -32,29 +32,10 @@ private:
 
 public:
 
-/*
- *
- *
- *
- *
- *
- *
- *
-	//TODO : override    virtual void draw(RenderTarget& target, RenderStates states) const = 0;
-
-
-
-
-
-
-
-
-
-*/
 	Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects) : playerSprite(playerTexture), animationTextureRects(animationTextureRects) {
 		playerSprite.setTextureRect(animationTextureRects.at(0));
-		initialPositionY = playerSprite.getGlobalBounds().top;
 		playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)); // place at bottom-middle of window
+		initialPositionY = playerSprite.getGlobalBounds().top;
 	}
 
 	void update() {
@@ -74,16 +55,20 @@ public:
 
 	void jump() { velocityY += 5.0f; }
 
-	sf::Sprite* const getSprite() { return &playerSprite; }
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
+		target.draw(playerSprite);
+	}
 
 };
 
 int main() {
 
+
 	///////RENDER WINDOW///////
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
 	//window->setVerticalSyncEnabled(true); //Or else use : window->setFramerateLimit(60); (But don't use both at the same time)
 	window.setFramerateLimit(INITIAL_FPS);
+
 
 	///////BACKGROUND///////
 	sf::Texture backgroundTexture;
@@ -93,28 +78,26 @@ int main() {
 	}
 	sf::Sprite background(backgroundTexture);
 
+
 	///////PLAYER///////
 	sf::Texture playerTexture;
 	if(!playerTexture.loadFromFile(PLAYER_TEXTURE_FILE)) {
 		std::cerr << "Failed to load texture " << PLAYER_TEXTURE_FILE << "\n";
 		return EXIT_FAILURE;
 	}
-
 	const std::vector<sf::IntRect> playerAnimationTextureRects{
 				sf::IntRect(0, 0, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT),
 				sf::IntRect(PLAYER_TEXTURE_WIDTH, 0, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT),
 				sf::IntRect(0, PLAYER_TEXTURE_HEIGHT, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT),
 				sf::IntRect(PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT),
 	};
-
 	Player player(playerTexture, playerAnimationTextureRects);
-	sf::Sprite playerSprite = *player.getSprite();
 
-	std::cout << player.getSprite() << " " << &playerSprite << std::endl;
 
 	///////FPS///////
 	sf::Clock clock;
 	unsigned int frameCounter = 0, currentFPS;
+
 
 	///////MAIN LOOP///////
 	while (window.isOpen()) {
@@ -129,6 +112,7 @@ int main() {
 		//CODE FOR FPS COUNTER ENDS
 
 		const float delta = INITIAL_FPS / currentFPS;
+
 
 		///////EVENT HANDLING///////
 		sf::Event event;
@@ -148,15 +132,15 @@ int main() {
 			if (event.type == sf::Event::MouseMoved) std::cout << "Mouse moved\n";*/
 		}
 
+
 		///////UPDATE///////
 		player.update();
 
-		std::cout << playerSprite.getPosition().x << " " << playerSprite.getPosition().y << std::endl;
 
 		///////CLEARING SCREEN AND RENDERING///////
 		window.clear();
 		window.draw(background);
-		window.draw(playerSprite);
+		window.draw(player);
 
 		window.display();
 		frameCounter += 1;
