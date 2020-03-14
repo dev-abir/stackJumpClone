@@ -9,7 +9,11 @@ This is a clone of the stack jump game.
 ## How to compile:
 ### On linux:
 
-#### (I know there are many other ways to build a cpp project, but I am listing just one of them.)
+### Some notes:
+> - Prevously I used `CMake` to build this project(see [`src/old/`](https://github.com/dev-moss/stackJumpClone/tree/master/src/old)), but now I do that manually. I just want this project to be as simple as possible.<br>
+> - (I know there are many other ways to build a cpp project, but I am listing just one of them.)
+
+---
 
 1. Get a c++ compiler(on Ubuntu/Ubuntu based distros : `sudo apt install build-essential`)
 2. Get SFML binaries(or you may build from it's source) goto https://www.sfml-dev.org/download.php and download the appropriate file.
