@@ -1,6 +1,26 @@
 # stackJumpClone
 This is a clone of the stack jump game.
 
-### Note : I haven't included "resources" directory which is extremely necessary to run this game, not including this due to it's size. You can add an issue about it if you want to see that directory.
+### Note : I haven't included "resources" directory which is extremely necessary to run this game, not including this due to it's size. You can add an issue about it if you want that directory.
 
-### Note 1 : I have no screenshot of this game running, as it has no complete release till now.
+### How to run:
+(I will provide compiled binaries from release 1)
+
+## How to compile:
+### On linux:
+
+#### (I know there are many other ways to build a cpp project, but I am listing just one of them.)
+
+1. Get a c++ compiler(on Ubuntu/Ubuntu based distros : `sudo apt install build-essential`)
+2. Get SFML binaries(or you may build from it's source) goto https://www.sfml-dev.org/download.php and download the appropriate file.
+3. Extract `SFML-2.5.1-linux-gcc-64-bit.tar.gz`(Yes I have tested the version 2.5.1, on a 64-bit linux)
+4. Copy the contents of `SFML-2.5.1/lib/' to 'usr/lib`
+5. Copy the extracted directory to 'src' directory of this project.
+6. `cd` to the project's root directory and issue this command : `g++ stack-jump.cpp -I SFML-2.5.1/include/ -L SFML-2.5.1/lib/ -lsfml-graphics -lsfml-window -lsfml-system -o game`
+7. Now to run this game issue this command : `./game`
+
+
+### On Windows:
+```
+(TODO)
+```
