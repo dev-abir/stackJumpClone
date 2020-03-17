@@ -35,16 +35,24 @@ public:
 	Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects) : playerSprite(playerTexture), animationTextureRects(animationTextureRects) {
 		playerSprite.setTextureRect(animationTextureRects.at(0));
 		playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)); // place at bottom-middle of window
+		//std::cout << playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)) << std::endl;
 		initialPositionY = playerSprite.getGlobalBounds().top;
 	}
 
 	void update() {
-		if(playerSprite.getGlobalBounds().top <= initialPositionY) velocityY += ACCELERATION_DUE_TO_GRAVITY;
-		else playerSprite.setPosition(playerSprite.getPosition().x, initialPositionY);
+		if(playerSprite.getPosition().y> initialPositionY){
+ playerSprite.setPosition(playerSprite.getPosition().x, initialPositionY);
+velocityY=0;
+}
+
+		else{
+ velocityY += ACCELERATION_DUE_TO_GRAVITY;
+		//std::cout << playerSprite.getGlobalBounds().top << std::endl;
+}
 
 		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y + velocityY);
 
-		std::cout << playerSprite.getPosition().y << std::endl;
+		//std::cout << initialPositionY << std::endl;
 
 		if(animationIndex >= (animationTextureRects.size() - 1)) animationIndex = 0;
 
@@ -53,7 +61,7 @@ public:
 		animationIndex++;
 	}
 
-	void jump() { velocityY += 5.0f; }
+	void jump() { velocityY -= 10.0f; }
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
 		target.draw(playerSprite);
