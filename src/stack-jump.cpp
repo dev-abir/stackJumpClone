@@ -40,17 +40,21 @@ public:
 	}
 
 	void update() {
-		if(playerSprite.getPosition().y> initialPositionY){
- playerSprite.setPosition(playerSprite.getPosition().x, initialPositionY);
-velocityY=0;
-}
+		std::cout << playerSprite.getPosition().y << std::endl;
 
-		else{
- velocityY += ACCELERATION_DUE_TO_GRAVITY;
-		//std::cout << playerSprite.getGlobalBounds().top << std::endl;
-}
-
+		///////UPDATING VELOCITY & POSITION///////
+ 		velocityY += ACCELERATION_DUE_TO_GRAVITY;
 		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y + velocityY);
+
+
+		///////COLLISION DETECTION///////
+		if(playerSprite.getPosition().y>= (initialPositionY)){
+ 			playerSprite.setPosition(playerSprite.getPosition().x, initialPositionY);
+			velocityY=0;
+		}
+
+
+		//std::cout << playerSprite.getGlobalBounds().top << std::endl;
 
 		//std::cout << initialPositionY << std::endl;
 
@@ -61,7 +65,7 @@ velocityY=0;
 		animationIndex++;
 	}
 
-	void jump() { velocityY -= 10.0f; }
+	void jump() { velocityY =- 10.0f; }
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
 		target.draw(playerSprite);
@@ -75,7 +79,7 @@ int main() {
 	///////RENDER WINDOW///////
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
 	//window->setVerticalSyncEnabled(true); //Or else use : window->setFramerateLimit(60); (But don't use both at the same time)
-	window.setFramerateLimit(INITIAL_FPS);
+	//window.setFramerateLimit(10);
 
 
 	///////BACKGROUND///////
@@ -143,7 +147,7 @@ int main() {
 
 		///////UPDATE///////
 		player.update();
-
+		
 
 		///////CLEARING SCREEN AND RENDERING///////
 		window.clear();
