@@ -147,7 +147,7 @@ int main() {
 
 		///////UPDATE///////
 		player.update();
-		
+
 
 		///////CLEARING SCREEN AND RENDERING///////
 		window.clear();
