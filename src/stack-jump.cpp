@@ -79,7 +79,7 @@ int main() {
 	///////RENDER WINDOW///////
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
 	//window->setVerticalSyncEnabled(true); //Or else use : window->setFramerateLimit(60); (But don't use both at the same time)
-	//window.setFramerateLimit(10);
+	window.setFramerateLimit(10);
 
 
 	///////BACKGROUND///////
