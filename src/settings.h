@@ -12,7 +12,7 @@
 #define WINDOW_HEIGHT WINDOW_WIDTH
 #define WINDOW_TITLE "Stack jump game"
 
-#define INITIAL_FPS 100000
+#define INITIAL_FPS 60
 
 #define BACKGROUND_TEXTURE_FILE "resources/sky1.png"
 #define PLAYER_TEXTURE_FILE "resources/slime.png"
