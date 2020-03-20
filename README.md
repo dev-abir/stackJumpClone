@@ -1,8 +1,6 @@
 # stackJumpClone
 This is a clone of the stack jump game.
 
-### Note : I haven't included "resources" directory which is extremely necessary to run this game, not including this due to it's size. You can add an issue about it if you want that directory.
-
 ### How to run:
 (I will provide compiled binaries from release 1)
 
