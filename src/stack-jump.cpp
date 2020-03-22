@@ -106,9 +106,8 @@ int main() {
 	Player player(playerTexture, playerAnimationTextureRects);
 
 
-	///////FPS///////
-	sf::Clock deltaClock;
-	sf::Clock fpsClock;
+	///////DECLARING VARIABLES FOR FINDING FPS AND DELTA///////
+	sf::Clock deltaClock, fpsClock;
 	unsigned int frameCounter = 0, currentFPS;
 
 
@@ -124,6 +123,8 @@ int main() {
 		}
 		//CODE FOR FPS COUNTER ENDS
 
+
+		///////FINDING DELTA///////
 		float delta = ((1.0 / INITIAL_FPS) * 1000.0) / deltaClock.getElapsedTime().asMilliseconds();
 		deltaClock.restart();
 
