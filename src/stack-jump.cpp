@@ -39,8 +39,7 @@ public:
 		initialPositionY = playerSprite.getGlobalBounds().top;
 	}
 
-	void update(float delta) {
-
+	void update(const float delta) {
 		///////UPDATING VELOCITY & POSITION///////
  		velocityY += ACCELERATION_DUE_TO_GRAVITY;
 		std::cout << delta << "\n";
