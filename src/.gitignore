@@ -1,0 +1,9 @@
+#all hidden files(except .gitignore)
+.*
+!/.gitignore
+
+#the executable
+game
+
+#the SFML library
+SFML-2.5.1
