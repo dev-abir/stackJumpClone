@@ -29,49 +29,51 @@ private:
 	float initialPositionY;
 	const std::vector<sf::IntRect>& animationTextureRects;
 	unsigned int animationIndex = 0;
+	bool jumping = false;
 
 public:
 
 	Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects) : playerSprite(playerTexture), animationTextureRects(animationTextureRects) {
 		playerSprite.setTextureRect(animationTextureRects.at(0));
 		playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)); // place at bottom-middle of window
-		//std::cout << playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)) << std::endl;
 		initialPositionY = playerSprite.getGlobalBounds().top;
 	}
 
-	void update() {
-		std::cout << playerSprite.getPosition().y << std::endl;
+	void update(float delta) {
 
 		///////UPDATING VELOCITY & POSITION///////
  		velocityY += ACCELERATION_DUE_TO_GRAVITY;
-		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y + velocityY);
+		std::cout << delta << "\n";
+		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y + (velocityY * delta));
 
 
 		///////COLLISION DETECTION///////
-		if(playerSprite.getPosition().y>= (initialPositionY)){
+		if(playerSprite.getPosition().y >= (initialPositionY)) {
  			playerSprite.setPosition(playerSprite.getPosition().x, initialPositionY);
-			velocityY=0;
+			velocityY = 0;
+			jumping = false;
 		}
 
 
-		//std::cout << playerSprite.getGlobalBounds().top << std::endl;
-
-		//std::cout << initialPositionY << std::endl;
-
+		///////UPDATING ANIMATION///////
 		if(animationIndex >= (animationTextureRects.size() - 1)) animationIndex = 0;
-
 		playerSprite.setTextureRect(animationTextureRects.at(animationIndex));
-
 		animationIndex++;
 	}
 
-	void jump() { velocityY =- 10.0f; }
+	void jump() {
+		if (!jumping) {
+			velocityY = -10.0f;
+			jumping = true;
+		}
+	}
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
 		target.draw(playerSprite);
 	}
-
 };
+
+
 
 int main() {
 
@@ -115,14 +117,14 @@ int main() {
 	///////MAIN LOOP///////
 	while (window.isOpen()) {
 
-		//CODE FOR FPS COUNTER STARTS
+		// <CODE FOR FPS COUNTER STARTS>
 		if (fpsClock.getElapsedTime().asMilliseconds() >= 1000.0) {
 			std::cout << "Current FPS : " << frameCounter << "\n";
 			currentFPS = frameCounter;
 			frameCounter = 0;
 			fpsClock.restart();
 		}
-		//CODE FOR FPS COUNTER ENDS
+		// <CODE FOR FPS COUNTER ENDS>
 
 		float delta = ((1.0 / INITIAL_FPS) * 1000.0) / deltaClock.getElapsedTime().asMilliseconds();
 		deltaClock.restart();
@@ -131,32 +133,29 @@ int main() {
 		///////EVENT HANDLING///////
 		sf::Event event;
 		while (window.pollEvent(event)) {
-
 			if (event.type == sf::Event::Closed) window.close();
-
 			if (event.type == sf::Event::KeyPressed) {
 				if (event.key.code == sf::Keyboard::Escape) window.close();
 				if (event.key.code == sf::Keyboard::Space) player.jump();
 			}
-
-			/*if (event.type == sf::Event::KeyReleased) playerTextureRect.left = 0;*/
-
-			/*if (event.type == sf::Event::MouseButtonPressed) std::cout << event.mouseButton.button << " is pressed\n";
-
+			/*if (event.type == sf::Event::KeyReleased) playerTextureRect.left = 0;
+			if (event.type == sf::Event::MouseButtonPressed) std::cout << event.mouseButton.button << " is pressed\n";
 			if (event.type == sf::Event::MouseMoved) std::cout << "Mouse moved\n";*/
 		}
 
 
 		///////UPDATE///////
-		player.update();
+		player.update(delta);
 
 
 		///////CLEARING SCREEN AND RENDERING///////
 		window.clear();
 		window.draw(background);
 		window.draw(player);
-
 		window.display();
+
+
+		///////INCREASING FRAME COUNTER(FOR DISPLAYING FPS)///////
 		frameCounter += 1;
 	}
 	return EXIT_SUCCESS;
