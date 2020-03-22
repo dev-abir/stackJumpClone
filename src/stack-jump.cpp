@@ -107,7 +107,8 @@ int main() {
 
 
 	///////FPS///////
-	sf::Clock clock;
+	sf::Clock deltaClock;
+	sf::Clock fpsClock;
 	unsigned int frameCounter = 0, currentFPS;
 
 
@@ -115,15 +116,16 @@ int main() {
 	while (window.isOpen()) {
 
 		//CODE FOR FPS COUNTER STARTS
-		if (clock.getElapsedTime().asMilliseconds() >= 1000.0) {
+		if (fpsClock.getElapsedTime().asMilliseconds() >= 1000.0) {
 			std::cout << "Current FPS : " << frameCounter << "\n";
 			currentFPS = frameCounter;
 			frameCounter = 0;
-			clock.restart();
+			fpsClock.restart();
 		}
 		//CODE FOR FPS COUNTER ENDS
 
-		const float delta = INITIAL_FPS / currentFPS;
+		float delta = ((1.0 / INITIAL_FPS) * 1000.0) / deltaClock.getElapsedTime().asMilliseconds();
+		deltaClock.restart();
 
 
 		///////EVENT HANDLING///////
