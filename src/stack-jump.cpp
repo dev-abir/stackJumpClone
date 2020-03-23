@@ -41,7 +41,7 @@ public:
 
 	void update(const float delta) {
 		///////UPDATING VELOCITY & POSITION///////
- 		velocityY += ACCELERATION_DUE_TO_GRAVITY;
+ 		velocityY += (ACCELERATION_DUE_TO_GRAVITY * delta);
 		std::cout << delta << "\n";
 		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y + (velocityY * delta));
 
@@ -107,10 +107,11 @@ int main() {
 	Player player(playerTexture, playerAnimationTextureRects);
 
 
-	///////FPS///////
+	///////FPS AND DELTA///////
 	sf::Clock deltaClock;
 	sf::Clock fpsClock;
 	unsigned int frameCounter = 0, currentFPS;
+	float delta;
 
 
 	///////MAIN LOOP///////
@@ -125,7 +126,9 @@ int main() {
 		}
 		// <CODE FOR FPS COUNTER ENDS>
 
-		float delta = ((1.0 / INITIAL_FPS) * 1000.0) / deltaClock.getElapsedTime().asMilliseconds();
+
+		///////DELTA///////
+		delta = deltaClock.getElapsedTime().asMilliseconds() / ((1.0 / INITIAL_FPS) * 1000.0);
 		deltaClock.restart();
 
 
