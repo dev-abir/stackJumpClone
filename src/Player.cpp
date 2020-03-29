@@ -10,7 +10,7 @@
  */
 Player::Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects) : playerSprite(playerTexture), animationTextureRects(animationTextureRects) {
 	playerSprite.setTextureRect(animationTextureRects.at(0));
-	playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - PlayerSprite.getLocalBounds().height)); // place at bottom-middle of window
+	playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)); // place at bottom-middle of window
 	initialPositionY = playerSprite.getGlobalBounds().top;
 }
 
