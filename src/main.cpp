@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "settings.h"
+#include "Player.h"
 
 /**
  *
@@ -19,60 +20,6 @@
  * License :
  *
  */
-
-
-class Player : public sf::Drawable {
-
-private:
-	float velocityY = 0.0;
-	sf::Sprite playerSprite;
-	float initialPositionY;
-	const std::vector<sf::IntRect>& animationTextureRects;
-	unsigned int animationIndex = 0;
-	bool jumping = false;
-
-public:
-
-	Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects) : playerSprite(playerTexture), animationTextureRects(animationTextureRects) {
-		playerSprite.setTextureRect(animationTextureRects.at(0));
-		playerSprite.setPosition((WINDOW_WIDTH / 2.0) - (playerSprite.getLocalBounds().width / 2.0), (WINDOW_HEIGHT - playerSprite.getLocalBounds().height)); // place at bottom-middle of window
-		initialPositionY = playerSprite.getGlobalBounds().top;
-	}
-
-	void update(const float delta) {
-		///////UPDATING VELOCITY & POSITION///////
- 		velocityY += (ACCELERATION_DUE_TO_GRAVITY * delta);
-		std::cout << delta << "\n";
-		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y + (velocityY * delta));
-
-
-		///////COLLISION DETECTION///////
-		if(playerSprite.getPosition().y >= (initialPositionY)) {
- 			playerSprite.setPosition(playerSprite.getPosition().x, initialPositionY);
-			velocityY = 0;
-			jumping = false;
-		}
-
-
-		///////UPDATING ANIMATION///////
-		if(animationIndex >= (animationTextureRects.size() - 1)) animationIndex = 0;
-		playerSprite.setTextureRect(animationTextureRects.at(animationIndex));
-		animationIndex++;
-	}
-
-	void jump() {
-		if (!jumping) {
-			velocityY = -10.0f;
-			jumping = true;
-		}
-	}
-
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
-		target.draw(playerSprite);
-	}
-};
-
-
 
 int main() {
 
