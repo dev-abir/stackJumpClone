@@ -25,10 +25,11 @@ private:
 	unsigned int animationIndex = 0;
 	bool jumping = false;
 
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override; // window.draw(...) will be able to access it(see : https://stackoverflow.com/questions/39240085/access-of-member-functions-in-c-inheritance). This method should not be available for any other class, because they will never use it, so why make it public?
+
 public:
 	Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects);
 	void update(const float delta);
 	void jump();
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 #endif /* PLAYER_H_ */
