@@ -37,7 +37,7 @@ void Player::update(const float delta) {
 
 void Player::jump() {
 	if (!jumping) {
-		velocityY = -10.0f;
+		velocityY = -PLAYER_VELOCITY_INCREMENT;
 		jumping = true;
 	}
 }
