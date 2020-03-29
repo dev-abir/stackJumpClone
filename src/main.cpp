@@ -7,11 +7,13 @@
 //============================================================================
 #include <iostream>
 #include <vector>
+#include <memory>
 
 #include <SFML/Graphics.hpp>
 
 #include "settings.h"
 #include "Player.h"
+#include "Plank.h"
 
 /**
  *
@@ -20,6 +22,51 @@
  * License :
  *
  */
+
+std::unique_ptr<std::vector<Plank>> initPlanksVector(std::vector<sf::FloatRect>& allDrawableBoundaries) {
+
+	#define LEFT 458
+	#define RIGHT 987
+
+	std::unique_ptr<std::vector<Plank>> planks;
+
+	sf::Texture plankTexture;
+	plankTexture.loadFromFile(PLANK_TEXTURE_FILE);
+	// Assuming the planks are placed at (0, 0) initially
+	const float PLANK_POSITION_INVISIBLE_LEFT = 0 - static_cast<int>(plankTexture.getSize().x);
+	const float PLANK_POSITION_INVISIBLE_RIGHT = WINDOW_WIDTH + static_cast<int>(plankTexture.getSize().x);
+
+	float plankHeight = plankTexture.getSize().y;
+
+	float placementHeight = 0;
+	float plankVelocity = FIRST_PLANK_VELOCITY;
+
+	std::cout << allDrawableBoundaries.at(0).width << "\n";
+
+	planks->push_back(Plank(plankTexture, allDrawableBoundaries, sf::Vector2f(PLANK_POSITION_INVISIBLE_LEFT, placementHeight), plankVelocity));
+	//																						|
+	//																						|
+	uint previousPosition = LEFT;//	<--------------------------------------------------------
+
+	allDrawableBoundaries.push_back(planks->at(0).getGlobalBounds());
+
+	plankVelocity += PLANK_VELOCITY_INCREMENT;
+
+	for (int i = 1; i < NUMBER_OF_PLANKS; i++) {
+		placementHeight += plankHeight;
+		plankVelocity += PLANK_VELOCITY_INCREMENT;
+
+		if (previousPosition == LEFT) {
+			planks->push_back(Plank(plankTexture, allDrawableBoundaries, sf::Vector2f(PLANK_POSITION_INVISIBLE_LEFT, placementHeight), plankVelocity));
+			previousPosition = RIGHT;
+		} else {
+			planks->push_back(Plank(plankTexture, allDrawableBoundaries, sf::Vector2f(PLANK_POSITION_INVISIBLE_RIGHT, placementHeight), plankVelocity));
+			previousPosition = LEFT;
+		}
+		allDrawableBoundaries.push_back(planks->at(i).getGlobalBounds());
+	}
+}
+
 
 int main() {
 
@@ -52,6 +99,13 @@ int main() {
 				sf::IntRect(PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT),
 	};
 	Player player(playerTexture, playerAnimationTextureRects);
+
+
+	///////PLANKS///////
+	std::vector<sf::FloatRect> allDrawableBoundaries{
+		player.getGlobalBounds()
+	};
+	std::unique_ptr<std::vector<Plank>> planks = std::move(initPlanksVector(allDrawableBoundaries));
 
 
 	///////FPS AND DELTA///////

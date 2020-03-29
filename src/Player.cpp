@@ -45,3 +45,7 @@ void Player::jump() {
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(playerSprite);
 }
+
+sf::FloatRect Player::getGlobalBounds() const {
+	return playerSprite.getGlobalBounds();
+}

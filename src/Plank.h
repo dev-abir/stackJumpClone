@@ -1,6 +1,6 @@
 
-#ifndef PLAYER_H_
-#define PLAYER_H_
+#ifndef PLANK_H_
+#define PLANK_H_
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
@@ -15,22 +15,21 @@
  *
  */
  
-class Player : public sf::Drawable {
+class Plank : public sf::Drawable {
 
 private:
-	float velocityY = 0.0;
-	sf::Sprite playerSprite;
+	sf::Sprite plankSprite;
+	float velocityX = 0.0f;
 	float initialPositionY;
-	const std::vector<sf::IntRect>& animationTextureRects;
-	unsigned int animationIndex = 0;
-	bool jumping = false;
+	bool hidden = true;
+	std::vector<sf::FloatRect>& allDrawableBoundaries;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override; // window.draw(...) will be able to access it(see : https://stackoverflow.com/questions/39240085/access-of-member-functions-in-c-inheritance). This method should not be available for any other class, because they will never use it, so why make it public?
 
 public:
-	Player(sf::Texture& playerTexture, const std::vector<sf::IntRect>& animationTextureRects);
+	Plank(sf::Texture plankTexture, std::vector<sf::FloatRect>& allDrawableBoundaries, const sf::Vector2f position, float velocity);
+	void show();
 	void update(const float delta);
-	void jump();
 	sf::FloatRect getGlobalBounds() const;
 };
-#endif /* PLAYER_H_ */
+#endif /* PLANK_H_ */
