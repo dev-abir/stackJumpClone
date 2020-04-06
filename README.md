@@ -8,7 +8,7 @@ This is a clone of the stack jump game.
 
 > (Prevously I used CMake to build this project(see src/old/), but now I do that manually. I just want this project to be as simple as possible.)
 
-### On linux:
+### On GNU/Linux:
 
 ### Some notes:
 > - I would highly encourage you to follow the way described here : https://www.sfml-dev.org/tutorials/2.5/start-linux.php, I have almost copied the exact same steps, but in a shorter way, without explanations.
